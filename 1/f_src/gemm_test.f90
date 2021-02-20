@@ -31,7 +31,7 @@ contains
         do i = 1, a%row
             do j = 1, b%col
                 do k = 1, b%row
-                    sum = sum + a%darray(i, k) * b%darray(i, j)
+                    sum = sum + a%darray(i, k) * b%darray(k, j)
                 end do
                 x(i, j) = sum
                 sum = 0
