@@ -18,10 +18,10 @@ part1:
 part2:
 	mkdir -p $(LIBDIR)
 	mkdir -p $(BINDIR)
-	$(GFORTRAN) $(FDIR)/gemm_test.f90 -o $(BINDIR)/f_only.out
+	$(GFORTRAN) $(FDIR)/gemm_test.f90 -o $(BINDIR)/gemm_test_f_only.out
 	$(CC) $(CFLAGS) $(CDIR)/matrix.c -o $(LIBDIR)/matrix.o
 	$(GFORTRAN) -c $(FDIR)/gemm_test_c.f90 -o $(LIBDIR)/gemm_test_c.o
-	$(GFORTRAN) $(LIBDIR)/gemm_test_c.o  $(LIBDIR)/matrix.o -o $(BINDIR)/f_call_c.out
+	$(GFORTRAN) $(LIBDIR)/gemm_test_c.o  $(LIBDIR)/matrix.o -o $(BINDIR)/gemm_test_f_call_c.out
 
 clean:
 	rm -rf $(LIBDIR)/* $(BINDIR)/*
