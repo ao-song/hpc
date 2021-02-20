@@ -12,4 +12,6 @@ To run fortran implemented matrix multiplication, run `bin/gemm_test_f_only.out`
 To run call c from fortran, run `bin/gemm_test_f_call_c.out`
 
 ## Part 3
+pipenv is needed, please install first.
+
 To run and check the result, just run `make part3`, the result of matrix multiplication of both via pybind11 and numpy matmul will be displayed.
