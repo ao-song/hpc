@@ -1,15 +1,7 @@
 #include <stdio.h>
 #include "matrix.h"
 
-int is_square(int n, double **m) {
-    return sizeof(m)/sizeof(double*) == n && sizeof(*m)/sizeof(double) == n;
-}
-
-void matrix(int n, double **c, double **a, double **b) {
-    if (!is_square(n, a) || !is_square(n, b) || !is_square(n, c)) {
-        perror("The input matrix is not n squared!\n");
-        return;
-    }
+void mul_matrix(int n, double c[n][n], double a[n][n], double b[n][n]) {
 
     double sum = 0;
 

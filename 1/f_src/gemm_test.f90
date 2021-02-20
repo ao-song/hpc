@@ -29,7 +29,7 @@ contains
         allocate(x(a%row, b%col))
         sum = 0.0
         do i = 1, a%row
-            do j = 1, a%col
+            do j = 1, b%col
                 do k = 1, b%row
                     sum = sum + a%darray(i, k) * b%darray(i, j)
                 end do

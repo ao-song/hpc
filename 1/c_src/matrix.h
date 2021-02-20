@@ -5,7 +5,7 @@
 extern "C" {
 #endif
 
-void matrix(int n, double **c, double **a, double **b);
+void mul_matrix(int n, double c[n][n], double a[n][n], double b[n][n]);
 
 #if defined (__cplusplus)
 }

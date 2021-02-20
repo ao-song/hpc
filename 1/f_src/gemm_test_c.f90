@@ -3,7 +3,7 @@ module c_matrix
         subroutine c_mul_matrix(n, r, a, b) bind(c, name='mul_matrix')
             use, intrinsic :: iso_c_binding
             implicit none
-            integer(kind=c_int) :: n
+            integer(kind=c_int), value :: n
             real(kind=c_double) :: r(n, n), a(n, n), b(n, n)
         end subroutine
     end interface
