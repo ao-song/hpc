@@ -2,7 +2,7 @@ module matrix
     implicit none
 
     type matrix_t
-        integer row, col
+        integer :: row, col
         real, dimension (:,:), allocatable :: darray
     contains
         procedure, pass(this) :: init => init_matrix
@@ -13,7 +13,7 @@ module matrix
 contains
     subroutine init_matrix(this, r, c)
         class(matrix_t), intent(inout) :: this
-        integer c, r
+        integer :: c, r
         allocate(this%darray(r, c))
         this%col = c
         this%row = r
