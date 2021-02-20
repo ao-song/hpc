@@ -7,14 +7,22 @@ CDIR = c_src
 FDIR = f_src
 PYDIR = py_src
 LIBDIR = lib
+BINDIR = bin
 GFORTRAN = gfortran
 
-build:
+part1:
 	mkdir -p $(LIBDIR)
 	$(CC) $(CFLAGS) $(CDIR)/matrix.c -o $(LIBDIR)/matrix.o
 	$(CC) $(LIBDIR)/matrix.o $(CSHARED) -o $(LIBDIR)/libmatrix.so
-	$(GFORTRAN) $(FDIR)/*.f90 -o $(LIBDIR)/f_matrix.out
+
+part2:
+	mkdir -p $(LIBDIR)
+	mkdir -p $(BINDIR)
+	$(GFORTRAN) $(FDIR)/gemm_test.f90 -o $(BINDIR)/f_only.out
+	$(CC) $(CFLAGS) $(CDIR)/matrix.c -o $(LIBDIR)/matrix.o
+	$(GFORTRAN) -c $(FDIR)/gemm_test_c.f90 -o $(LIBDIR)gemm_test_c.o
+	$(GFORTRAN) $(LIBDIR)/gemm_test_c.o  $(LIBDIR)/matrix.o $(BINDIR)/f_call_c.out
 
 clean:
-	rm -rf $(LIBDIR)/*.so $(LIBDIR)/*.o $(LIBDIR)/f_matrix.out
-	rm matrix.mod
+	rm -rf $(LIBDIR)/* $(BINDIR)/*
+	rm *.mod
