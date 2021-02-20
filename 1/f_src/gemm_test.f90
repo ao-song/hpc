@@ -63,4 +63,8 @@ program gemm_test
             print*, "C%darray(",i,",",j,") = ", C%darray(i,j)
         end do
     end do
+
+    deallocate(A%darray)
+    deallocate(B%darray)
+    deallocate(C%darray)
 end program gemm_test

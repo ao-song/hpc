@@ -1,16 +1,20 @@
 #include <stdio.h>
 #include "matrix.h"
 
-void mul_matrix(int n, double c[n][n], double a[n][n], double b[n][n]) {
+void mul_matrix(int n, MATRIX c, MATRIX a, MATRIX b) {
+    double *ret, *arg1, *arg2;
+    ret = (double *)c;
+    arg1 = (double *)a;
+    arg2 = (double *)b;
 
     double sum = 0;
 
     for (int row = 0; row < n; row++) {
         for (int col = 0; col < n; col++) {
             for (int i = 0; i < n; i++) {
-                sum += a[row][i] * b[i][col];
+                sum += arg1[row*n+i] * arg2[i*n+col];
             }
-            c[row][col] = sum;
+            ret[row*n+col] = sum;
             sum = 0;
         }
     }
