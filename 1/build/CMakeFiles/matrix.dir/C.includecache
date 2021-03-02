@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/ao/kth/HPC/assignments/hpc/1/src/matrix.c
+stdio.h
+-
+matrix.h
+/home/ao/kth/HPC/assignments/hpc/1/src/matrix.h
+
+/home/ao/kth/HPC/assignments/hpc/1/src/matrix.h
+

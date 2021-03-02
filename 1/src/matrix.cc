@@ -2,12 +2,15 @@
 #include "pybind11/numpy.h"     // Include the Pybind11 header
 
 #include <assert.h>
+extern "C" {
+    #include "matrix.h"
+}
 
 namespace py = pybind11;
 
 #define MATRIX py::array_t<double>&
 
-void mul_matrix(MATRIX c, MATRIX a, MATRIX b) {
+void mul_matrix_wrapper(MATRIX c, MATRIX a, MATRIX b) {
     py::buffer_info c_info = c.request();
     py::buffer_info a_info = a.request();
     py::buffer_info b_info = b.request();
@@ -28,22 +31,13 @@ void mul_matrix(MATRIX c, MATRIX a, MATRIX b) {
     double *b_ptr = (double *)b_info.ptr;
     double *c_ptr = (double *)c_info.ptr;
 
-    double sum = 0;
-    for (int i = 0; i < a_row; i++) {
-        for (int j = 0; j < b_col; j++) {
-            for (int k = 0; k < a_col; k++) {
-                sum += a_ptr[i*a_col+k] * b_ptr[k*b_col+j];
-            }
-            c_ptr[i*c_col+j] = sum;
-            sum = 0;
-        }
-    }
+    mul_matrix(a_row, c_ptr, a_ptr, b_ptr);
 }
 
 /* name of module-   ---a variable with type py::module_ to create the binding */
 /*               |   |                                                                                                */
 /*               v   v                                                                                               */
-PYBIND11_MODULE(mul_matrix, m) {                            // Create a module using the PYBIND11_MODULE macro
-    m.doc() = "pybind11 mul_matrix module";
-    m.def("mul_matrix", &mul_matrix, "Multiply two matrice"); // calls module::def() to create generate binding code that exposes mul_matrix()
+PYBIND11_MODULE(matrix, m) {                            // Create a module using the PYBIND11_MODULE macro
+    m.doc() = "pybind11 mul_matrix_cxx module";
+    m.def("mul_matrix", &mul_matrix_wrapper, "Multiply two matrice"); // calls module::def() to create generate binding code that exposes mul_matrix()
 }

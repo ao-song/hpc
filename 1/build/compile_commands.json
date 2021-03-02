@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/home/ao/kth/HPC/assignments/hpc/1/build",
+  "command": "/bin/g++-9  -Dpy_matrix_EXPORTS -I/home/ao/kth/HPC/assignments/hpc/1/src -isystem /home/ao/kth/HPC/assignments/hpc/1/pybind11/include -isystem /usr/include/python3.8  -g -fPIC -fvisibility=hidden   -o CMakeFiles/py_matrix.dir/src/matrix.cc.o -c /home/ao/kth/HPC/assignments/hpc/1/src/matrix.cc",
+  "file": "/home/ao/kth/HPC/assignments/hpc/1/src/matrix.cc"
+},
+{
+  "directory": "/home/ao/kth/HPC/assignments/hpc/1/build",
+  "command": "gfortran  -I/home/ao/kth/HPC/assignments/hpc/1/src  -g   -c /home/ao/kth/HPC/assignments/hpc/1/src/gemm_test.f90 -o CMakeFiles/gemm_test.out.dir/src/gemm_test.f90.o",
+  "file": "/home/ao/kth/HPC/assignments/hpc/1/src/gemm_test.f90"
+},
+{
+  "directory": "/home/ao/kth/HPC/assignments/hpc/1/build",
+  "command": "/bin/gcc-9 -Dmatrix_EXPORTS -I/home/ao/kth/HPC/assignments/hpc/1/src  -g -fPIC   -Wall -O3 -o CMakeFiles/matrix.dir/src/matrix.c.o   -c /home/ao/kth/HPC/assignments/hpc/1/src/matrix.c",
+  "file": "/home/ao/kth/HPC/assignments/hpc/1/src/matrix.c"
+}
+]

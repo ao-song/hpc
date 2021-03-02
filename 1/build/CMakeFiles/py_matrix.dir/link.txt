@@ -1,0 +1,1 @@
+/bin/g++-9 -fPIC -g  -shared  -o ../lib/matrix.cpython-38-x86_64-linux-gnu.so CMakeFiles/py_matrix.dir/src/matrix.cc.o  -Wl,-rpath,/home/ao/kth/HPC/assignments/hpc/1/lib ../lib/libmatrix.so 

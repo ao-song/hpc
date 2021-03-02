@@ -1,0 +1,1 @@
+/bin/gcc-9 -fPIC -g  -shared -Wl,-soname,libmatrix.so -o ../lib/libmatrix.so CMakeFiles/matrix.dir/src/matrix.c.o 

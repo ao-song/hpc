@@ -1,17 +1,13 @@
 # 1 - Assignment II: Programming Languages for HPC
 
-c code in *c_src*, fortran code in *f_src*, python code in *py_src*
+All code located in src/
 
-## Part 1
-To build part1, run `make part1` then find *libmatrix.so* under *lib*.
+To build, run:
+`cd build && cmake .. && make`
 
-## Part 2
-To build part2, run `make part2` then the excutable binaries will be located in *bin*.
+Then you can find:
+*part1:* Find the libmatrix.so in lib/
+*part2:* Find gemm_test.out in bin/
+*part3:* Copy the generated *matrix.cpython-38-x86_64-linux-gnu.so* with *run_matrix.py* and run `pipenv run python3 run_matrix.py`, then you will find two results, one was calculated by calling the cpp code, another was calculated via operator * provided by numpy library.
 
-To run fortran implemented matrix multiplication, run `bin/gemm_test_f_only.out`
-To run call c from fortran, run `bin/gemm_test_f_call_c.out`
-
-## Part 3
-pipenv is needed, please install first.
-
-To run and check the result, just run `make part3`, the result of matrix multiplication of both via pybind11 and numpy matmul will be displayed.
+**Notice** you have to install pipenv to create virtual environment to run the python code.

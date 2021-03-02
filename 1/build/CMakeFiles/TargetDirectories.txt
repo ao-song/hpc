@@ -1,0 +1,7 @@
+/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles/rebuild_cache.dir
+/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles/edit_cache.dir
+/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles/py_matrix.dir
+/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles/gemm_test.out.dir
+/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles/matrix.dir
+/home/ao/kth/HPC/assignments/hpc/1/build/pybind11/CMakeFiles/rebuild_cache.dir
+/home/ao/kth/HPC/assignments/hpc/1/build/pybind11/CMakeFiles/edit_cache.dir

@@ -5,9 +5,7 @@
 extern "C" {
 #endif
 
-#define MATRIX void*
-
-void mul_matrix(int n, MATRIX c, MATRIX a, MATRIX b);
+void mul_matrix(int n, void* c, void* a, void* b);
 
 #if defined (__cplusplus)
 }

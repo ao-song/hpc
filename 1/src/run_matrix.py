@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-import mul_matrix
+import matrix
 import numpy as np
 
 def run():
@@ -8,7 +8,7 @@ def run():
     b = np.random.random([10, 10])
     c = np.zeros((10, 10))
 
-    mul_matrix.mul_matrix(c, a, b)
+    matrix.mul_matrix(c, a, b)
 
     print('The array after call mul_matrix is:')
     print(c)
