@@ -1,1 +1,1 @@
-gfortran   -g CMakeFiles/gemm_test.out.dir/src/gemm_test.f90.o  -o ../bin/gemm_test.out  -Wl,-rpath,/home/ao/kth/HPC/assignments/hpc/1/lib ../lib/libmatrix.so 
+gfortran   -g CMakeFiles/gemm_test.out.dir/src/gemm_test.f90.o CMakeFiles/gemm_test.out.dir/src/gemm_matrix.f90.o  -o ../bin/gemm_test.out  -Wl,-rpath,/home/ao/kth/HPC/assignments/hpc/1/lib ../lib/libmatrix.so 

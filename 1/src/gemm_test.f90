@@ -1,105 +1,57 @@
-module matrix
-    implicit none
-
-    type matrix_t
-        integer :: row, col
-        real, dimension (:,:), allocatable :: darray
-    contains
-        procedure, pass(this) :: init => init_matrix
-        procedure :: mul_mx => mul_matrix
-        generic :: operator(*) => mul_mx
-    end type matrix_t
-
-contains
-    subroutine init_matrix(this, r, c)
-        class(matrix_t), intent(inout) :: this
-        integer :: c, r
-        allocate(this%darray(r, c))
-        this%col = c
-        this%row = r
-    end subroutine
-
-    function mul_matrix(a, b) result(c)
-        class(matrix_t), intent(in) :: a, b
-        type(matrix_t) :: c
-        real, dimension(:,:), allocatable :: x
-        real :: sum
-        integer :: i, j, k
-
-        allocate(x(a%row, b%col))
-        sum = 0.0
-        do i = 1, a%row
-            do j = 1, b%col
-                do k = 1, b%row
-                    sum = sum + a%darray(i, k) * b%darray(k, j)
-                end do
-                x(i, j) = sum
-                sum = 0
-            end do
-        end do
-
-        c%darray = x
-    end function
-end module matrix
-
-module c_matrix
-    interface
-        subroutine c_mul_matrix(n, r, a, b) bind(c, name='mul_matrix')
-            use, intrinsic :: iso_c_binding
-            implicit none
-            integer(kind=c_int), value :: n
-            type(c_ptr), value :: r, a, b
-        end subroutine
-    end interface
-end module
-
 program gemm_test
-    use, intrinsic :: iso_c_binding
-    use c_matrix
-    use iso_fortran_env, only : real64
+    use matrix
     implicit none
-    real(kind=real64), dimension(:,:), allocatable, target :: a
-    real(kind=real64), dimension(:,:), allocatable, target :: b
-    real(kind=real64), dimension(:,:), allocatable, target :: c
-    integer :: n
-    integer :: i, j
-    type(c_ptr) :: aptr
-    type(c_ptr) :: bptr
-    type(c_ptr) :: cptr
 
-    n = 10
-    allocate(a(10, 10))
-    allocate(b(10, 10))
-    allocate(c(10, 10))
+    type(matrix_t) :: A, B, C
+    real(kind=8), allocatable :: truth(:,:)
 
-    a = transpose(a)
-    b = transpose(b)
+    CHARACTER(len=32) :: arg
+    type(integer) :: matrix_size = 3 ! default to 3
+    integer :: i, j, k
 
-    aptr = c_loc(a(1, 1))
-    bptr = c_loc(b(1, 1))
-    cptr = c_loc(c(1, 1))
+    if (iargc() .gt. 0) then
+      call getarg(1, arg)
+      read(arg, "(I32)") matrix_size
+    end if
 
-    ! Fill A, B with data
-    do i = 1, 10
-        do j = 1, 10
-           a(i,j) = i*j
-           b(i,j) = 1
-        end do
+    ! init arrays
+    call A%init(matrix_size, matrix_size)
+    call B%init(matrix_size, matrix_size)
+    ! call C%init(matrix_size, matrix_size)
+    allocate(truth(matrix_size, matrix_size))
+
+    ! fill A and B
+    call random_number(A%data)
+    call random_number(B%data)
+
+    ! Compute truth
+    truth = matmul(A%data, B%data)
+
+    ! Compute matmul
+    C = A * B
+
+    ! print out
+    print *, "Result:"
+    do i = 1,matrix_size
+      print *, (C%data(i,j), j=1,matrix_size)
     end do
 
-    call c_mul_matrix(n, cptr, aptr, bptr)
+    print *
 
-    a = transpose(a)
-    b = transpose(b)
-    c = transpose(c)
-
-    do i = 1, 10
-        do j = 1, 10
-            print*, "result(",i,",",j,") = ", c(i,j)
-        end do
+    print *, "Truth:"
+    do i = 1,matrix_size
+      print *, (truth(i,j), j=1,matrix_size)
     end do
 
-    deallocate(c)
-    deallocate(a)
-    deallocate(b)
-end program gemm_test
+    do j = 1,matrix_size
+       do i = 1,matrix_size
+          if (abs(C%data(i,j) - truth(i,j)) .gt. 1e-12) then
+              print *, "Error: (", i, ",", j,") -> C:", C%data(i,j), "; truth:", truth(i,j)
+              stop 42
+          end if
+       end do
+    end do
+
+    print *
+    print *, "Pass"
+  end program gemm_test

@@ -98,7 +98,7 @@ pybind11/clean:
 CMakeFiles/py_matrix.dir/all: CMakeFiles/matrix.dir/all
 	$(MAKE) -f CMakeFiles/py_matrix.dir/build.make CMakeFiles/py_matrix.dir/depend
 	$(MAKE) -f CMakeFiles/py_matrix.dir/build.make CMakeFiles/py_matrix.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles --progress-num=5,6 "Built target py_matrix"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles --progress-num=6,7 "Built target py_matrix"
 .PHONY : CMakeFiles/py_matrix.dir/all
 
 # Build rule for subdir invocation for target.
@@ -125,12 +125,12 @@ CMakeFiles/py_matrix.dir/clean:
 CMakeFiles/gemm_test.out.dir/all: CMakeFiles/matrix.dir/all
 	$(MAKE) -f CMakeFiles/gemm_test.out.dir/build.make CMakeFiles/gemm_test.out.dir/depend
 	$(MAKE) -f CMakeFiles/gemm_test.out.dir/build.make CMakeFiles/gemm_test.out.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles --progress-num=1,2 "Built target gemm_test.out"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles --progress-num=1,2,3 "Built target gemm_test.out"
 .PHONY : CMakeFiles/gemm_test.out.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/gemm_test.out.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/gemm_test.out.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles 0
 .PHONY : CMakeFiles/gemm_test.out.dir/rule
@@ -152,7 +152,7 @@ CMakeFiles/gemm_test.out.dir/clean:
 CMakeFiles/matrix.dir/all:
 	$(MAKE) -f CMakeFiles/matrix.dir/build.make CMakeFiles/matrix.dir/depend
 	$(MAKE) -f CMakeFiles/matrix.dir/build.make CMakeFiles/matrix.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles --progress-num=3,4 "Built target matrix"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ao/kth/HPC/assignments/hpc/1/build/CMakeFiles --progress-num=4,5 "Built target matrix"
 .PHONY : CMakeFiles/matrix.dir/all
 
 # Build rule for subdir invocation for target.

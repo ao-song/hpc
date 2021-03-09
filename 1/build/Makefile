@@ -149,6 +149,33 @@ matrix/fast:
 	$(MAKE) -f CMakeFiles/matrix.dir/build.make CMakeFiles/matrix.dir/build
 .PHONY : matrix/fast
 
+src/gemm_matrix.o: src/gemm_matrix.f90.o
+
+.PHONY : src/gemm_matrix.o
+
+# target to build an object file
+src/gemm_matrix.f90.o:
+	$(MAKE) -f CMakeFiles/gemm_test.out.dir/build.make CMakeFiles/gemm_test.out.dir/src/gemm_matrix.f90.o
+.PHONY : src/gemm_matrix.f90.o
+
+src/gemm_matrix.i: src/gemm_matrix.f90.i
+
+.PHONY : src/gemm_matrix.i
+
+# target to preprocess a source file
+src/gemm_matrix.f90.i:
+	$(MAKE) -f CMakeFiles/gemm_test.out.dir/build.make CMakeFiles/gemm_test.out.dir/src/gemm_matrix.f90.i
+.PHONY : src/gemm_matrix.f90.i
+
+src/gemm_matrix.s: src/gemm_matrix.f90.s
+
+.PHONY : src/gemm_matrix.s
+
+# target to generate assembly for a file
+src/gemm_matrix.f90.s:
+	$(MAKE) -f CMakeFiles/gemm_test.out.dir/build.make CMakeFiles/gemm_test.out.dir/src/gemm_matrix.f90.s
+.PHONY : src/gemm_matrix.f90.s
+
 src/gemm_test.o: src/gemm_test.f90.o
 
 .PHONY : src/gemm_test.o
@@ -241,6 +268,9 @@ help:
 	@echo "... py_matrix"
 	@echo "... gemm_test.out"
 	@echo "... matrix"
+	@echo "... src/gemm_matrix.o"
+	@echo "... src/gemm_matrix.i"
+	@echo "... src/gemm_matrix.s"
 	@echo "... src/gemm_test.o"
 	@echo "... src/gemm_test.i"
 	@echo "... src/gemm_test.s"

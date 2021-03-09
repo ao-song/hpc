@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "../bin/gemm_test.out"
   "../bin/gemm_test.out.pdb"
+  "CMakeFiles/gemm_test.out.dir/src/gemm_matrix.f90.o"
   "CMakeFiles/gemm_test.out.dir/src/gemm_test.f90.o"
 )
 

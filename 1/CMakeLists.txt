@@ -9,7 +9,7 @@ include_directories("${CMAKE_SOURCE_DIR}/src/")
 
 add_library(matrix SHARED src/matrix.c)
 
-add_executable(gemm_test.out src/gemm_test.f90)
+add_executable(gemm_test.out src/gemm_test.f90 src/gemm_matrix.f90)
 
 add_subdirectory(pybind11)
 pybind11_add_module(py_matrix "${CMAKE_SOURCE_DIR}/src/matrix.cc")
